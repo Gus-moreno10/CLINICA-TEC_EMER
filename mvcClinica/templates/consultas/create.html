@@ -1,0 +1,45 @@
+{% extends 'base.html' %}
+
+{% block title %} CONSULTAS | CREATE {% endblock %}
+
+{% block content %}
+<h1>Registro de consultas</h1>
+<form action="{{ url_for('consulta.create') }}" method="POST">
+    <div class="mb-3">
+        <label class="form-label">Fecha</label>
+        <input type="date" class="form-control" name="fecha" required>
+    </div>
+
+    <div class="mb-3">
+        <label class="form-label">Diagnostico</label>
+        <input type="text" class="form-control" name="diagnostico" required>
+    </div>
+
+    <div class="mb-3">
+        <label class="form-label">Tratamiento</label>
+        <input type="text" class="form-control" name="tratamiento" required>
+    </div>
+
+    <div class="mb-3">
+        <label class="form-label">Medico</label>
+        <select name="id_medico" class="form-control" required>
+            <option value="">seleccione un medico</option>
+            {% for medico in medicos %}
+            <option value="{{ medico.id_medico }}">{{ medico.nombre }} - {{ medico.especialidad }}</option>
+            {% endfor %}
+        </select>
+    </div>
+
+    <div class="mb-3">
+        <label class="form-label">Paciente</label>
+        <select name="id_paciente" class="form-control" required>
+            <option value="">seleccione un paciente</option>
+            {% for paciente in pacientes %}
+            <option value="{{ paciente.id_paciente }}">{{ paciente.nombre }}</option>
+            {% endfor %}
+        </select>
+    </div>
+
+    <button type="submit" class="btn btn-primary">Registrar consulta</button>
+</form>
+{% endblock %}

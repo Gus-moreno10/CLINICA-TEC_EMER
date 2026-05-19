@@ -1,0 +1,42 @@
+{% extends 'base.html' %}
+{% block title %} CONSULTAS {% endblock %}
+
+{% block content %}
+<h1>Lista de Consultas</h1>
+<a href="{{ url_for('consulta.create') }}" class="btn btn-success mb-3">Nuevo</a>
+
+<form method="GET" action="{{ url_for('consulta.index') }}" class="row g-3 mb-3">
+    <div class="col-auto">
+        <input type="date" class="form-control" name="fecha" value="{{ fecha_buscada or '' }}">
+    </div>
+    <div class="col-auto">
+        <button type="submit" class="btn btn-primary">Filtrar por fecha</button>
+        <a href="{{ url_for('consulta.index') }}" class="btn btn-secondary">Limpiar</a>
+    </div>
+</form>
+
+<table class="table table-striped">
+    <tr>
+        <th>ID</th>
+        <th>Fecha</th>
+        <th>Paciente</th>
+        <th>Medico</th>
+        <th>Diagnostico</th>
+        <th>Tratamiento</th>
+        <th></th>
+        <th></th>
+    </tr>
+    {% for item in consultas %}
+    <tr>
+        <td>{{ item.id_consulta }}</td>
+        <td>{{ item.fecha }}</td>
+        <td>{{ item.paciente.nombre }}</td>
+        <td>{{ item.medico.nombre }}</td>
+        <td>{{ item.diagnostico }}</td>
+        <td>{{ item.tratamiento }}</td>
+        <td><a href="{{ url_for('consulta.edit', id_consulta=item.id_consulta) }}" class="btn btn-warning">Editar</a></td>
+        <td><a href="{{ url_for('consulta.delete', id_consulta=item.id_consulta) }}" class="btn btn-danger">Eliminar</a></td>
+    </tr>
+    {% endfor %}
+</table>
+{% endblock %}

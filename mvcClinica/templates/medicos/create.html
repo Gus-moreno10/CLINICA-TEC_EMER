@@ -1,0 +1,30 @@
+{% extends 'base.html' %}
+
+{% block title %} MEDICOS | CREATE {% endblock %}
+
+{% block content %}
+<h1>Registro de medicos</h1>
+<form action="{{ url_for('medico.create') }}" method="POST">
+    <div class="mb-3">
+        <label class="form-label">Nombre</label>
+        <input type="text" class="form-control" name="nombre" required>
+    </div>
+
+    <div class="mb-3">
+        <label class="form-label">Especialidad</label>
+        <input type="text" class="form-control" name="especialidad" required>
+    </div>
+
+    <div class="mb-3">
+        <label class="form-label">Telefono</label>
+        <input type="text" class="form-control" name="telefono" required>
+    </div>
+
+    <div class="mb-3">
+        <label class="form-label">Correo</label>
+        <input type="email" class="form-control" name="correo" required>
+    </div>
+
+    <button type="submit" class="btn btn-primary">Registrar medico</button>
+</form>
+{% endblock %}

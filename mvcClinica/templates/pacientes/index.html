@@ -1,0 +1,30 @@
+{% extends 'base.html' %}
+{% block title %} PACIENTES {% endblock %}
+
+{% block content %}
+<h1>Lista de Pacientes</h1>
+<a href="{{ url_for('paciente.create') }}" class="btn btn-success mb-3">Nuevo</a>
+
+<table class="table table-striped">
+    <tr>
+        <th>ID</th>
+        <th>Nombre</th>
+        <th>Edad</th>
+        <th>Direccion</th>
+        <th>Telefono</th>
+        <th></th>
+        <th></th>
+    </tr>
+    {% for item in pacientes %}
+    <tr>
+        <td>{{ item.id_paciente }}</td>
+        <td>{{ item.nombre }}</td>
+        <td>{{ item.edad }}</td>
+        <td>{{ item.direccion }}</td>
+        <td>{{ item.telefono }}</td>
+        <td><a href="{{ url_for('paciente.edit', id_paciente=item.id_paciente) }}" class="btn btn-warning">Editar</a></td>
+        <td><a href="{{ url_for('paciente.delete', id_paciente=item.id_paciente) }}" class="btn btn-danger">Eliminar</a></td>
+    </tr>
+    {% endfor %}
+</table>
+{% endblock %}
