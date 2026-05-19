@@ -1,4 +1,4 @@
-from database import db
+from mvcClinica.database import db
 
 
 class Paciente(db.Model):

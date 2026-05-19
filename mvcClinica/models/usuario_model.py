@@ -1,6 +1,6 @@
 from werkzeug.security import check_password_hash, generate_password_hash
 
-from database import db
+from mvcClinica.database import db
 
 
 class Usuario(db.Model):

@@ -1,7 +1,19 @@
+import os
+import sys
+
+if __package__ is None or __package__ == "":
+    sys.path.append(os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
+
 from flask import Flask, request, redirect, url_for, session
-from controllers import medico_controller, paciente_controller, consulta_controller, usuario_controller
-from database import db
-from models.usuario_model import Usuario
+
+from mvcClinica.controllers import (
+    consulta_controller,
+    medico_controller,
+    paciente_controller,
+    usuario_controller,
+)
+from mvcClinica.database import db
+from mvcClinica.models.usuario_model import Usuario
 
 app = Flask(__name__)
 
@@ -51,7 +63,9 @@ def home():
     return redirect(url_for("usuario.login"))
 
 
+with app.app_context():
+    initialize_database()
+
+
 if __name__ == "__main__":
-    with app.app_context():
-        initialize_database()
     app.run(debug=True)

@@ -2,11 +2,11 @@ from datetime import datetime
 
 from flask import Blueprint, redirect, request, url_for
 
-from controllers.usuario_controller import login_required, role_required
-from models.consulta_model import Consulta
-from models.medico_model import Medico
-from models.paciente_model import Paciente
-from views import consulta_view
+from mvcClinica.controllers.usuario_controller import login_required, role_required
+from mvcClinica.models.consulta_model import Consulta
+from mvcClinica.models.medico_model import Medico
+from mvcClinica.models.paciente_model import Paciente
+from mvcClinica.views import consulta_view
 
 consulta_bp = Blueprint("consulta", __name__, url_prefix="/consultas")
 

@@ -2,8 +2,8 @@ from functools import wraps
 
 from flask import Blueprint, redirect, request, session, url_for
 
-from models.usuario_model import Usuario
-from views import usuario_view
+from mvcClinica.models.usuario_model import Usuario
+from mvcClinica.views import usuario_view
 
 usuario_bp = Blueprint("usuario", __name__, url_prefix="/usuarios")
 

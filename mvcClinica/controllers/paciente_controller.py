@@ -1,8 +1,8 @@
 from flask import Blueprint, redirect, request, url_for
 
-from controllers.usuario_controller import login_required, role_required
-from models.paciente_model import Paciente
-from views import paciente_view
+from mvcClinica.controllers.usuario_controller import login_required, role_required
+from mvcClinica.models.paciente_model import Paciente
+from mvcClinica.views import paciente_view
 
 paciente_bp = Blueprint("paciente", __name__, url_prefix="/pacientes")
 
